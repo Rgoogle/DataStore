@@ -51,8 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editor.putString("password", passEditText.getText().toString());
 
         editor.commit();
-
-        startActivity(new Intent(this,OtherActivity.class));
+        Intent intent = new Intent(this, OtherActivity.class);
+        intent.putExtra("zh",loginEditText.getText().toString());
+        intent.putExtra("mm",passEditText.getText().toString());
+        startActivity(intent);
     }
 
 }

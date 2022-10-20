@@ -35,12 +35,15 @@ public class OtherActivity extends AppCompatActivity implements View.OnClickList
     private void showContext() {
         File file=getExternalFilesDir("");
         File fileTxt=new File(file.toString()+"/text.txt");
+
+        Intent intent = getIntent();
         try {
             FileReader fr = new FileReader(fileTxt);
             char[] buff=new char[1024];
             fr.read(buff);
-            textViewContext.setText(buff.toString());
-            System.out.println("hello:"+buff.toString());
+
+            textViewContext.setText("账号:"+intent.getStringExtra("zh")+"\n"+"密码:"+intent.getStringExtra("mm")+"\n"+new String(buff));
+            System.out.println("hello:"+new String(buff));
             fr.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
